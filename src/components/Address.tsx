@@ -8,6 +8,7 @@ interface AddressProps {
   tailChars?: number;
   showCopy?: boolean;
   showLink?: boolean;
+  full?: boolean;
   className?: string;
 }
 
@@ -17,19 +18,28 @@ export default function Address({
   tailChars = 4,
   showCopy = true,
   showLink = true,
+  full = false,
   className = '',
 }: AddressProps) {
   const [copied, setCopied] = useState(false);
+  const [copyFailed, setCopyFailed] = useState(false);
 
   const handleCopy = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    await navigator.clipboard.writeText(address);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setCopied(false);
+    setCopyFailed(false);
+    try {
+      await navigator.clipboard.writeText(address);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      setCopyFailed(true);
+    }
   };
 
-  const formatted = formatAddress(address, headChars, tailChars);
+  const formatted = full ? address : formatAddress(address, headChars, tailChars);
+  const copyLabel = copyFailed ? 'Could not copy address. Select and copy it manually.' : copied ? 'Copied!' : 'Copy address';
 
   return (
     <span className={`inline-flex items-center gap-1.5 font-mono ${className}`}>
@@ -38,18 +48,20 @@ export default function Address({
           href={getEtherscanAddressUrl(address)}
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-primary transition-colors"
+          className={`hover:text-primary transition-colors ${full ? 'min-w-0 break-all' : ''}`}
         >
           {formatted}
         </a>
       ) : (
-        <span>{formatted}</span>
+        <span className={full ? 'min-w-0 break-all' : ''}>{formatted}</span>
       )}
       {showCopy && (
         <button
+          type="button"
           onClick={handleCopy}
-          className="text-tertiary hover:text-primary transition-colors"
-          title={copied ? 'Copied!' : 'Copy address'}
+          className="shrink-0 text-tertiary hover:text-primary transition-colors"
+          title={copyLabel}
+          aria-label={copyLabel}
         >
           {copied ? (
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

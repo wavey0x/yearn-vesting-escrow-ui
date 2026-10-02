@@ -17,6 +17,9 @@ import {
   getEtherscanTxUrl,
 } from '../lib/constants';
 import TokenAmount from '../components/TokenAmount';
+import TokenLogo from '../components/TokenLogo';
+import ContractInfo from '../components/ContractInfo';
+import { useTokenMetadata } from '../hooks/useTokens';
 import { erc20Abi, erc4626VaultAbi, v04FactoryAbi } from '../lib/contracts';
 import { EscrowKind } from '../lib/types';
 import {
@@ -76,6 +79,7 @@ export default function Create() {
 
   // Funding token or vault data
   const validTokenAddress = isAddress(tokenAddress) ? tokenAddress : undefined;
+  const fundingMetadata = useTokenMetadata(validTokenAddress);
 
   const { data: vaultAsset } = useReadContract({
     address: validTokenAddress as Address,
@@ -405,9 +409,12 @@ export default function Create() {
 
   if (!isConnected) {
     return (
-      <div className="text-center py-12">
-        <h1 className="text-2xl font-bold text-primary mb-4">Create Escrow</h1>
-        <p className="text-secondary">Connect your wallet to create a vesting escrow.</p>
+      <div className="max-w-xl mx-auto py-12">
+        <div className="text-center mb-6">
+          <h1 className="text-2xl font-bold text-primary mb-4">Create Escrow</h1>
+          <p className="text-secondary">Connect your wallet to create a vesting escrow.</p>
+        </div>
+        <ContractInfo />
       </div>
     );
   }
@@ -454,9 +461,12 @@ export default function Create() {
   return (
     <div className="max-w-xl mx-auto">
       <h1 className="text-2xl font-bold text-primary mb-2">Create Escrow</h1>
-      <p className="text-secondary mb-8">
+      <p className="text-secondary mb-6">
         Deploy a new vesting escrow with custom parameters.
       </p>
+      <div className="mb-8">
+        <ContractInfo />
+      </div>
 
       <div className="space-y-6">
         <div>
@@ -510,12 +520,22 @@ export default function Create() {
             className="w-full px-4 py-2 border border-divider-strong rounded bg-background focus:outline-none focus:border-primary font-mono"
           />
           {validTokenAddress && fundingSymbol && (
-            <p className="mt-2 text-sm text-secondary">
-              {fundingSymbol} {escrowKind === 'erc4626' ? 'shares' : ''} - Balance:{' '}
-              {fundingBalance !== undefined
-                ? <TokenAmount value={fundingBalance} decimals={fundingDecimals ?? 18} />
-                : '...'}
-            </p>
+            <div className="mt-2 flex items-center gap-2 text-sm text-secondary">
+              <TokenLogo
+                address={validTokenAddress}
+                symbol={fundingSymbol}
+                logoUrl={fundingMetadata?.logoUrl}
+                displaySize={20}
+                hideWhenUnavailable
+                className="shrink-0 object-contain"
+              />
+              <p className="min-w-0 break-words">
+                {fundingSymbol} {escrowKind === 'erc4626' ? 'shares' : ''} — Balance:{' '}
+                {fundingBalance !== undefined
+                  ? <TokenAmount value={fundingBalance} decimals={fundingDecimals ?? 18} />
+                  : '...'}
+              </p>
+            </div>
           )}
           {escrowKind === 'erc4626' && vaultAsset && (
             <p className="mt-1 text-sm text-tertiary">
