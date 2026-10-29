@@ -1,5 +1,5 @@
 {
-  "lastIndexed": "2026-10-21T02:47:20.916570+00:00",
+  "lastIndexed": "2026-10-29T03:47:46.083309+00:00",
   "chainId": 1,
   "escrows": [
     {
@@ -12892,28 +12892,60 @@
       "openClaim": true,
       "blockNumber": 26138073,
       "txHash": "8ad27fed8beb91dcb46d18488a09f6b9deb53ff30d1cfdc77d9f2c98ec0c6138"
+    },
+    {
+      "address": "0x19e4C068317701D138e950D1F17F6C0D3c53c5be",
+      "factory": "0xcf61782465Ff973638143d6492B51A85986aB347",
+      "version": "llamapay-v2",
+      "kind": "token",
+      "funder": "0xCA1F000D520c21C47E6c634DD31b92b91A6338bD",
+      "token": "0xdef1ca1fb7fbcdc777520aa7f396b4e015f497ab",
+      "recipient": "0x5D40015034DA6cD75411c54dd826135f725c2498",
+      "amount": "126000000000000000000000",
+      "vestingStart": 1785517200,
+      "vestingDuration": 31536000,
+      "cliffLength": 0,
+      "openClaim": true,
+      "blockNumber": 26295180,
+      "txHash": "932458f2dce920ecb174d4ba97cfe522fad9609bc4ad9ff87c6fafd47f43b6b4"
+    },
+    {
+      "address": "0xbd7364c9eC849BBb693ec4Af6343C61aa0DeCDeD",
+      "factory": "0xcf61782465Ff973638143d6492B51A85986aB347",
+      "version": "llamapay-v2",
+      "kind": "token",
+      "funder": "0xCA1F000D520c21C47E6c634DD31b92b91A6338bD",
+      "token": "0xdef1ca1fb7fbcdc777520aa7f396b4e015f497ab",
+      "recipient": "0x9135BA0f495244dc0A5F029b25CDE95157Db89AD",
+      "amount": "54000000000000000000000",
+      "vestingStart": 1785517200,
+      "vestingDuration": 31536000,
+      "cliffLength": 0,
+      "openClaim": true,
+      "blockNumber": 26295180,
+      "txHash": "932458f2dce920ecb174d4ba97cfe522fad9609bc4ad9ff87c6fafd47f43b6b4"
     }
   ],
   "factories": {
     "0x200C92Dd85730872Ab6A1e7d5E40A067066257cF": {
       "deployBlock": 18291969,
-      "lastBlock": 26238075
+      "lastBlock": 26295804
     },
     "0xcf61782465Ff973638143d6492B51A85986aB347": {
       "deployBlock": 19739664,
-      "lastBlock": 26238075
+      "lastBlock": 26295804
     },
     "0xF124534bfa6Ac7b89483B401B4115Ec0d27cad6A": {
       "deployBlock": 11868366,
-      "lastBlock": 26238075
+      "lastBlock": 26295804
     },
     "0x98d3872b4025ABE58C4667216047Fe549378d90f": {
       "deployBlock": 13373452,
-      "lastBlock": 26238075
+      "lastBlock": 26295804
     },
     "0xFbd94e2D6942D5b4Ed0C5C9C43bded77a8f20215": {
       "deployBlock": 25602335,
-      "lastBlock": 26238075
+      "lastBlock": 26295804
     }
   }
 }
