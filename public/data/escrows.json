@@ -1,5 +1,5 @@
 {
-  "lastIndexed": "2026-10-29T03:47:46.083309+00:00",
+  "lastIndexed": "2026-11-02T17:48:31.524211+00:00",
   "chainId": 1,
   "escrows": [
     {
@@ -12924,28 +12924,44 @@
       "openClaim": true,
       "blockNumber": 26295180,
       "txHash": "932458f2dce920ecb174d4ba97cfe522fad9609bc4ad9ff87c6fafd47f43b6b4"
+    },
+    {
+      "address": "0x0d0930593A4E1bD77FbAdcEEE3DDB9eA58Bf2427",
+      "factory": "0x200C92Dd85730872Ab6A1e7d5E40A067066257cF",
+      "version": "v0.3.0",
+      "kind": "token",
+      "funder": "0xbCc932e4750C3E465A7E54A06A34F9EdF8f6116b",
+      "token": "0xbe53a109b494e5c9f97b9cd39fe969be68bf6204",
+      "recipient": "0x4444AAAACDBa5580282365e25b16309Bd770ce4a",
+      "amount": "137352833669",
+      "vestingStart": 1792022400,
+      "vestingDuration": 7257600,
+      "cliffLength": 0,
+      "openClaim": true,
+      "blockNumber": 26327395,
+      "txHash": "9499f155431e973b176fb780b872988c27b705a0b90cca9e5da6cd3a6b8ceaf8"
     }
   ],
   "factories": {
     "0x200C92Dd85730872Ab6A1e7d5E40A067066257cF": {
       "deployBlock": 18291969,
-      "lastBlock": 26295804
+      "lastBlock": 26328688
     },
     "0xcf61782465Ff973638143d6492B51A85986aB347": {
       "deployBlock": 19739664,
-      "lastBlock": 26295804
+      "lastBlock": 26328688
     },
     "0xF124534bfa6Ac7b89483B401B4115Ec0d27cad6A": {
       "deployBlock": 11868366,
-      "lastBlock": 26295804
+      "lastBlock": 26328688
     },
     "0x98d3872b4025ABE58C4667216047Fe549378d90f": {
       "deployBlock": 13373452,
-      "lastBlock": 26295804
+      "lastBlock": 26328688
     },
     "0xFbd94e2D6942D5b4Ed0C5C9C43bded77a8f20215": {
       "deployBlock": 25602335,
-      "lastBlock": 26295804
+      "lastBlock": 26328688
     }
   }
 }
